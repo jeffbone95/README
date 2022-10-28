@@ -12,8 +12,8 @@ const questions = [
                 return "README Generator" 
             } 
             return val; 
-        }
-    } 
+        },
+    }, 
     { 
         type: "input", 
         name: "username", 
@@ -73,7 +73,7 @@ const questions = [
     }, 
     { 
         type: "input", 
-        name: "How-to", 
+        name: "How", 
         message: "Please follow prompts as given to the user", 
         filter(val) { 
             if (val=== "") { 
@@ -96,16 +96,44 @@ const questions = [
     function createMD(answers){ 
         let strngToApnd = ""; 
         let rtn = "\n\n\n"; 
-        strngToApnd += "#" + answers.ProjectTitle + rtn;
+        strngToApnd += "#" + answers.README + rtn;
    strngToApnd += "## Table of Contents \n"; 
-   strngToApnd += `1. [How-to](#How-to)\n`;  
-   strngToApnd += `2. [information](#information)\n`
-
-
-
-
-
+   strngToApnd += `1. [How](#How-to)\n`;  
+   strngToApnd += `2. [information](#information)\n`; 
+   strngToApnd += `3. [deployment](#deployment)\n`; 
+   strngToApnd += `4. [installer](#installer)\n`;  
+   strngToApnd += "## How \n"; 
+   strngToApnd += answers.How + rtn; 
     }
+   
+
+
+   if (answers.deploy) { 
+    strngToApnd += 
+    "* " + 
+    `<a href="https://jeffbone95.github.io/${answers.README}/" target="_blank"> click here to deploy </a> /n/n`; 
+
+   } 
+   strngToApnd += "## installer \n"; 
+   strngToApnd += answers.installer +rtn; 
+   strngToApnd += "## Questions\n"; 
+  
+   function createMD2(answers){ 
+    let rtn = 
+    ` 
+    #${answers.projectTitle}`
+   }
+
+
+
+
+   
+  
+
+
+
+
+
 
 
 
@@ -126,4 +154,3 @@ const questions = [
 
 
 
-]
